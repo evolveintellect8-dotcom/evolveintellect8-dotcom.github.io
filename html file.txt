@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aliz IT | Portfolio Website</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f3ea;
+      color: #111827;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8, 18, 38, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      color: white;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: #d6b15d;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      opacity: 0.85;
+      transition: 0.25s;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+      color: #d6b15d;
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at top right, rgba(214, 177, 93, 0.25), transparent 35%),
+        linear-gradient(135deg, #071225 0%, #0b1730 52%, #d6b15d 52%, #f3df9d 100%);
+      color: white;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 48px;
+      padding: 80px 0;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 9px 16px;
+      border-radius: 999px;
+      color: #f5df9d;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(46px, 7vw, 84px);
+      line-height: 0.95;
+      letter-spacing: -3px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      color: #f5df9d;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 610px;
+      color: #e5e7eb;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-weight: 800;
+      transition: 0.25s;
+    }
+
+    .btn-primary {
+      background: #d62839;
+      color: white;
+      box-shadow: 0 16px 32px rgba(214, 40, 57, 0.28);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      background: #bf1f30;
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #071225;
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      background: #f5df9d;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 30px;
+      padding: 28px;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(16px);
+    }
+
+    .screen {
+      background: #111827;
+      border-radius: 24px;
+      padding: 18px;
+      border: 10px solid #222;
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    .screen-top {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #d6b15d;
+    }
+
+    .pos-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+      font-size: 14px;
+    }
+
+    .pos-row strong {
+      color: #f5df9d;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 54px;
+    }
+
+    .section-title span {
+      color: #d62839;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(34px, 4vw, 52px);
+      margin-top: 8px;
+      letter-spacing: -1.5px;
+      color: #071225;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .about-box {
+      background: #071225;
+      color: white;
+      border-radius: 30px;
+      padding: 38px;
+      position: relative;
+      overflow: hidden;
+      min-height: 340px;
+    }
+
+    .about-box::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      background: #d6b15d;
+      border-radius: 50%;
+      right: -80px;
+      bottom: -80px;
+      opacity: 0.8;
+    }
+
+    .about-box h3 {
+      font-size: 36px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-box p {
+      color: #d1d5db;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 28px;
+      color: #f5df9d;
+    }
+
+    .about-text h3 {
+      font-size: 34px;
+      margin-bottom: 16px;
+      color: #071225;
+    }
+
+    .about-text p {
+      color: #4b5563;
+      margin-bottom: 18px;
+      font-size: 17px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+      border: 1px solid #eee7d7;
+      transition: 0.25s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.14);
+    }
+
+    .icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: #fff0f1;
+      color: #d62839;
+      font-size: 26px;
+      margin-bottom: 18px;
+    }
+
+    .service-card h3 {
+      font-size: 21px;
+      margin-bottom: 10px;
+      color: #071225;
+    }
+
+    .service-card p {
+      color: #6b7280;
+      font-size: 15px;
+    }
+
+    .portfolio {
+      background: #071225;
+      color: white;
+    }
+
+    .portfolio .section-title h2 {
+      color: white;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 26px;
+      overflow: hidden;
+      transition: 0.25s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .project-img {
+      height: 190px;
+      background: linear-gradient(135deg, #d6b15d, #d62839);
+      display: grid;
+      place-items: center;
+      font-size: 46px;
+    }
+
+    .project-content {
+      padding: 24px;
+    }
+
+    .project-content h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .project-content p {
+      color: #d1d5db;
+      font-size: 15px;
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, #071225, #111f3d);
+      color: white;
+      border-radius: 34px;
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 30px;
+      box-shadow: 0 25px 70px rgba(7, 18, 37, 0.25);
+    }
+
+    .contact-card h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      margin-bottom: 12px;
+    }
+
+    .contact-card p {
+      color: #d1d5db;
+      font-size: 18px;
+    }
+
+    .phone {
+      background: #d62839;
+      padding: 18px 24px;
+      border-radius: 20px;
+      font-size: 26px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    footer {
+      background: #050b17;
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+    }
+
+    footer p {
+      color: #9ca3af;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .contact-card {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid,
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero {
+        background: linear-gradient(160deg, #071225 0%, #0b1730 72%, #d6b15d 72%);
+      }
+
+      .services-grid,
+      .portfolio-grid,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .contact-card {
+        padding: 30px;
+      }
+
+      .phone {
+        font-size: 20px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">Aliz <span>IT</span></a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">Established 2015 • Complete Business Support</div>
+          <h1>Everything Your Business Needs, <span>All in One Place</span></h1>
+          <p>From till rolls and card terminals to online ordering, menu design, marketing, broadband and IT support — Aliz IT helps businesses run smarter and grow faster.</p>
+          <div class="hero-actions">
+            <a href="#services" class="btn btn-primary">View Services</a>
+            <a href="#contact" class="btn btn-secondary">Get a Quote</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="screen">
+            <div class="screen-top">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <div class="pos-row"><span>EPOS System Setup</span><strong>Ready</strong></div>
+            <div class="pos-row"><span>Card Terminal</span><strong>Active</strong></div>
+            <div class="pos-row"><span>Online Ordering</span><strong>Live</strong></div>
+            <div class="pos-row"><span>Marketing Campaign</span><strong>Running</strong></div>
+            <div class="pos-row"><span>IT Support</span><strong>24/7</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container about-grid">
+        <div class="about-box">
+          <h3>Reliable IT & Business Solutions Since 2015</h3>
+          <p>We support restaurants, takeaways, retail shops and small businesses with practical technology, print, marketing and support services.</p>
+          <div class="stats">
+            <div class="stat"><strong>9+</strong><span>Years</span></div>
+            <div class="stat"><strong>100+</strong><span>Clients</span></div>
+            <div class="stat"><strong>24/7</strong><span>Support</span></div>
+          </div>
+        </div>
+        <div class="about-text">
+          <h3>We keep your business moving.</h3>
+          <p>Businesses do not need five different suppliers for simple operational needs. Aliz IT brings essential services together so owners can save time, reduce hassle and focus on customers.</p>
+          <p>Our approach is simple: clean setup, honest advice, fast support and practical solutions that actually help daily business operations.</p>
+          <a href="#contact" class="btn btn-primary">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-title">
+          <span>Our Services</span>
+          <h2>Complete Support for Modern Businesses</h2>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="icon">🧾</div>
+            <h3>Till Rolls</h3>
+            <p>Quality till rolls and printing essentials for shops, restaurants and takeaways.</p>
+          </div>
+          <div class="service-card">
+            <div class="icon">💳</div>
+            <h3>Card Terminal</h3>
+            <p>Payment terminal setup and support for smooth customer transactions.</p>
+          </div>
+          <div class="service-card">
+            <div class="icon">🛒</div>
+            <h3>Online Ordering</h3>
+            <p>Ordering systems that help customers buy from your business easily.</p>
+          </div>
+          <div class="service-card">
+            <div class="icon">🍽️</div>
+            <h3>Menu Design & Print</h3>
+            <p>Professional menus, flyers and print materials that look sharp and sell better.</p>
+          </div>
+          <div class="service-card">
+            <div class="icon">📣</div>
+            <h3>Digital Marketing</h3>
+            <p>Social media and local marketing support to increase visibility and sales.</p>
+          </div>
+          <div class="service-card">
+            <div class="icon">☎️</div>
+            <h3>Telephone & Broadband</h3>
+            <p>Connectivity solutions for reliable day-to-day business communication.</p>
+          </div>
+          <div class="service-card">
+            <div class="icon">🖥️</div>
+            <h3>IT Support</h3>
+            <p>Technical help, troubleshooting and setup support when your business needs it.</p>
+          </div>
+          <div class="service-card">
+            <div class="icon">🎓</div>
+            <h3>Aliz EduCare</h3>
+            <p>Education-focused support projects designed to help communities grow.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="section portfolio">
+      <div class="container">
+        <div class="section-title">
+          <span>Portfolio</span>
+          <h2>Recent Work Examples</h2>
+        </div>
+
+        <div class="portfolio-grid">
+          <div class="project-card">
+            <div class="project-img">🖥️</div>
+            <div class="project-content">
+              <h3>Restaurant EPOS Setup</h3>
+              <p>Complete till, receipt printing and card terminal setup for a busy food business.</p>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-img">📱</div>
+            <div class="project-content">
+              <h3>Online Ordering System</h3>
+              <p>Mobile-friendly ordering platform to reduce phone orders and improve speed.</p>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="project-img">🎨</div>
+            <div class="project-content">
+              <h3>Menu & Branding Design</h3>
+              <p>Clean menu design, print layout and promotional assets for local businesses.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="contact-card">
+          <div>
+            <h2>Let’s build something amazing together.</h2>
+            <p>Need till rolls, terminals, online ordering, marketing or IT support? Contact Aliz IT today.</p>
+          </div>
+          <a class="phone" href="tel:07868634944">07868 634944</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 Aliz IT. All Rights Reserved. | www.alizit.co.uk | @alizit</p>
+    </div>
+  </footer>
+</body>
+</html>
